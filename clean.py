@@ -11,9 +11,8 @@ X_full = pd.read_csv('.\\venv\\train.csv')
 X_test_full = pd.read_csv('.\\venv\\test.csv')
 
 # Remove rows with missing target, separate target from predictors
-X_full.dropna(axis=0, subset=['SalePrice'], inplace=True)
-y = X_full.SalePrice
-X_full.drop(['SalePrice'], axis=1, inplace=True)
+X_full = X_full.dropna(axis=0, subset=['SalePrice'])
+y = X_full.pop("SalePrice")
 
 # Break off validation set from training data
 X_train_full, X_valid_full, y_train, y_valid = train_test_split(X_full, y,
